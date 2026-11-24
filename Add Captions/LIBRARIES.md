@@ -22,5 +22,7 @@ reads frames back to check burned-in captions.
 
 ## Tooling
 
+- `Tools/make_icon.swift` writes the Icon Composer app icon (`AppIcon.icon`: icon.json + an SVG layer) and optional PNG previews with Core Graphics and ImageIO (run with `swift`, not part of the app)
+
 - Xcode 27.2, Swift 6.4 toolchain (Swift 5 language mode, main-actor default isolation)
 - Targets: macOS, iOS, and visionOS 27.2

@@ -55,9 +55,9 @@ struct ImportView: View {
 
     var body: some View {
         VStack(spacing: Metrics.large) {
-            Image(systemName: "captions.bubble.fill")
-                .font(.system(size: 52))
-                .foregroundStyle(.tint)
+            LogoMark()
+                .fill(.tint, style: FillStyle(eoFill: true))
+                .frame(width: 70, height: 70 / LogoMark.aspectRatio)
                 .accessibilityHidden(true)
             Text("Add English captions to a video")
                 .font(.title.weight(.semibold))

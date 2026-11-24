@@ -53,11 +53,25 @@ Open `Add Captions.xcodeproj` in Xcode 27.2 and run the `Add Captions` scheme. T
 xcodebuild test -project "Add Captions.xcodeproj" -scheme "Add Captions" -destination 'platform=macOS'
 ```
 
-The 34 tests in `Add CaptionsTests/` include end-to-end checks that generate real videos: they
+The 38 tests in `Add CaptionsTests/` include end-to-end checks that generate real videos: they
 synthesize speech and transcribe it, burn captions in and check the pixels of the output frames
 (including a rotated portrait video), and read the subtitle track back out of `.mov` and `.mp4` files.
 
 For checking the app by hand, Debug builds accept `-openVideo <path>` as a launch argument to open a
 video straight into the editor.
+
+The app icon is `Add Captions/AppIcon.icon`, an Icon Composer icon (a screen with a play sign and two
+caption lines, a glass layer on the brand blue #2774AE), so macOS and iOS draw it with their glass
+effect and in dark, clear and tinted looks. It is written by `Tools/make_icon.swift`; after changing
+the drawing, regenerate it (and optional flat PNG previews):
+
+```sh
+swift Tools/make_icon.swift "Add Captions/AppIcon.icon" --png /tmp/icon-previews
+```
+
+You can also open `AppIcon.icon` in Icon Composer (inside Xcode: Xcode > Open Developer Tool) to adjust
+the glass, shadow or colours by hand; rerunning the script overwrites those changes.
+`LogoMark` (`Frontend/LogoMark.swift`) draws the same mark on the start screen; keep its `path(in:)`
+and the script's `markPath` identical. visionOS has no icon yet (it uses its own layered format).
 
 There are no third-party dependencies; see `Add Captions/LIBRARIES.md`. Usage help is in `HELP.md`.
